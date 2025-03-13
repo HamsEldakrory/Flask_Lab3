@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Add a New Book</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4 shadow-lg">
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.description.label(class="form-label") }}
+                        {{ form.description(class="form-control", rows=3) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.publish_date.label(class="form-label") }}
+                        {{ form.publish_date(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.price.label(class="form-label") }}
+                        {{ form.price(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.appropriate_for.label(class="form-label") }}
+                        {{ form.appropriate_for(class="form-select") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.image.label(class="form-label") }}
+                        {{ form.image(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.author_id.label(class="form-label") }}
+                        {{ form.author_id(class="form-select") }}
+                    </div>
+
+                    <div class="text-center">
+                        {{ form.submit(class="btn btn-success") }}
+                        <a href="{{ url_for('main.book_list') }}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

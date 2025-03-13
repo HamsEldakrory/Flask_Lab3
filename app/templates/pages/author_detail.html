@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ author.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body text-center">
+                    <h2 class="card-title text-primary">{{ author.name }}</h2>
+                    <p class="card-text"><strong>Books by this Author:</strong></p>
+                    {% if author.books %}
+                        <ul class="list-group list-group-flush">
+                            {% for book in author.books %}
+                                <li class="list-group-item">
+                                    <a href="{{ url_for('main.view_book', book_id=book.id) }}">{{ book.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted">No books available.</p>
+                    {% endif %}
+
+                    <div class="mt-3">
+                        <a href="{{ url_for('main.author_list') }}" class="btn btn-outline-secondary">Back to Authors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

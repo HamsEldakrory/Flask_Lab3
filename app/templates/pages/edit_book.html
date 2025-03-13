@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Book - My Bookstore{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Edit Book</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST" action="{{ url_for('main.edit_book', book_id=book.id) }}">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.publish_date.label(class="form-label") }}
+                    {{ form.publish_date(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.price.label(class="form-label") }}
+                    {{ form.price(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.appropriate_for.label(class="form-label") }}
+                    {{ form.appropriate_for(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.author_id.label(class="form-label") }}
+                    {{ form.author_id(class="form-select") }}
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success">Update Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

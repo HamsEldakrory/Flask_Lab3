@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <img src="{{ url_for('static', filename='images/' + book.image) }}" 
+                             class="img-fluid rounded-start" 
+                             alt="{{ book.name }}" 
+                             style="max-height: 300px; object-fit: cover; width: 100%;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h2 class="card-title text-primary">{{ book.name }}</h2>
+                            <p class="card-text"><strong>Description:</strong> {{ book.description }}</p>
+                            <p class="card-text"><strong>Publish Date:</strong> {{ book.publish_date }}</p>
+                            <p class="card-text"><strong>Price:</strong> ${{ book.price }}</p>
+                            <p class="card-text"><strong>Age Group:</strong> {{ book.appropriate_for }}</p>
+                            <p class="card-text"><strong>Author:</strong> 
+                                <a href="{{ url_for('main.view_author', author_id=book.author.id) }}" class="text-decoration-none text-primary">
+                                    {{ book.author.name }}
+                                </a>
+                            </p>
+
+                            <a href="{{ url_for('main.book_list') }}" class="btn btn-outline-secondary mt-3 view_btn">Back to Books</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
